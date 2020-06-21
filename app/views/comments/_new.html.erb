@@ -1,0 +1,12 @@
+<%= content_tag 'div', class: 'card', data: {target: 'comment.newCommentForm', action: 'ajax:success->comment#prependComment'} do %>
+  <%= content_tag 'div', class: 'card-body' do %>
+    <%= form_with model: @comment, url: post_comments_path do |f| %>
+      <%= content_tag 'div', class: 'mb-3' do %>
+        <%= f.label :body, 'Your comment', class: 'form-label' %>
+        <%= f.text_area :body, class: 'form-control' %>
+      <% end %>
+      <%= f.button type: 'submit', class: 'btn btn-primary' %>
+      <%= f.button 'Cancel', type: 'button', class: 'btn btn-danger', data: {action: 'click->comment#hideForm'} %>
+    <% end %>
+  <% end %>
+<% end %>

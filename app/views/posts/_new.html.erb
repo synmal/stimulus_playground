@@ -1,0 +1,16 @@
+<%= content_tag 'div', class: 'card', data: {target: 'post.newPostForm', action: 'ajax:success->post#prependPost'} do %>
+  <%= content_tag 'div', class: 'card-body' do %>
+    <%= form_with model: @post do |f| %>
+      <%= content_tag 'div', class: 'mb-3' do %>
+        <%= f.label :title, 'Post title', class: 'form-label' %>
+        <%= f.text_field :title, class: 'form-control' %>
+      <% end %>
+      <%= content_tag 'div', class: 'mb-3' do %>
+        <%= f.label :content, 'Post content', class: 'form-label' %>
+        <%= f.text_area :content, class: 'form-control' %>
+      <% end %>
+      <%= f.button type: 'submit', class: 'btn btn-primary' %>
+      <%= f.button 'Cancel', type: 'button', class: 'btn btn-danger', data: {action: 'click->post#hideForm'} %>
+    <% end %>
+  <% end %>
+<% end %>

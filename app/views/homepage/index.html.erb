@@ -1,0 +1,11 @@
+<div class="container" data-controller="post">
+  <h1>All Posts</h1>
+  <%= content_tag 'div', data: {target: 'post.newPost'} do %>
+    <%= link_to 'New Post', new_post_path, class: 'btn btn-primary mb-3', data: {target: 'post.newButton', action: 'ajax:success->post#newPostForm', remote: true} %>
+  <% end %>
+  <%= content_tag 'div', data: {target: 'post.postContainer'} do %>
+    <% @posts.each do |post| %>
+      <%= link_to post.title, post, class: 'd-block' %>
+    <% end %>
+  <% end %>
+</div>
